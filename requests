@@ -1,0 +1,8 @@
+# requests
+
+curl -X POST -H "Content-Type: application/json" -d '{"title":"hacer la tarea","text":"algo"}' localhost:3000/api/notes
+
+#borrar nota
+curl -X POST -H DELETE localhost:3000/api/notes/61770257f7e705d5e030fcb8
+#modificar nota
+curl -X POST -H

@@ -6,23 +6,36 @@ router
   .route('/api/notes')
   .get((req,res) => {
     Note.find((err, notes) => {
-      res.json(notes);
+      res.json(notes)
     })
   })
-  .post(req, res) =>{
-    res.send('Crear nota');
+
+  .post((req, res) => {
+  const note = new Note({
+    title: req.body.title,
+    text: req.body.text
   });
+  note.save((err, note) => {
+    res.json(note);
+  })
+});
 
 router
   .route('/api/notes/:id')
   .get((req, res)=> {
-    res.send('Una nota por ID');
-  })
-  .put((req, res) => {
-    res.send('Actualizar nota');
+    Note.find({ id: req.params.id},(err, notes) => {
+      res.json(notes);
+    })
   })
   .delete((req, res) => {
-    res.send('Borrar nota');
+    note.findByIdAndRemove(req.params.id, (err) => {
+    res.json({ msg: 'nota borrada'});
+  });
+
+
+
+
+
   });
 
 module.exports = router;
