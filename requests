@@ -4,5 +4,6 @@ curl -X POST -H "Content-Type: application/json" -d '{"title":"hacer la tarea","
 
 #borrar nota
 curl -X POST -H DELETE localhost:3000/api/notes/61770257f7e705d5e030fcb8
-#modificar nota
-curl -X POST -H
+# modificar una nota
+
+curl -X PUT -H "Content-Type: application/json" -d '{"title":"Hacer el miercoles"}' localhost:3000/api/notes/616dc00e7f45d9fdee457886
