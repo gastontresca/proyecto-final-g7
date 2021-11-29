@@ -9,11 +9,8 @@ const Nota = props => {
           <button type="button" onClick={() => deleteNote(id)}>Borrar</button>
           <button type="button" onClick={() => updateNote(id)}>Editar</button>
         </div >
-
       </div >
     </div>
-
   );
 };
-
 export default Nota;
