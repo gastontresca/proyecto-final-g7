@@ -1,12 +1,13 @@
-// App.js
+//app
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Nota from './Nota';
+import Nota from './Nota'
+import 'bootstrap/dist/css/bootstrap.css';
 const App = () => {
 
   const [notes, setNotes] = useState([]);
-  
-    const deleteNote = id => {
+
+  const deleteNote = id => {
     axios.delete('http://localhost:4000/api/notes/' + id)
       .then(res => {
         const notasActualizadas = notes.filter(note => id !== note._id);
@@ -48,45 +49,53 @@ const App = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log('Enviando formulario...');
+    console.log('enviando formulario....');
     console.log(title, text);
     const note = { title, text };
     axios.post('http://localhost:4000/api/notes', note)
-    .then(res => {
-      console.log(res.data);
-      setNotes([res.data, ...notes]);
-    })
-    .catch(err => console.log(err));
+      .then(res => {
+        console.log(res.data);
+        setNotes([res.data, ...notes]);
+        setTitle('');
+        setText('');
+      })
+      .catch(err => console.log(err));
   };
-
   return (
-    <div className="app">
-      <div className="agregarNota">
-        <form onSubmit={handleSubmit}>
-          <label>Titulo</label>
-          <input
-            onChange={e => setTitle(e.target.value)}
-            value={title}
-            type="text"
-          />
-          <label>Texto</label>
-          <input
-            onChange={e => setText(e.target.value)}
-            value={text}
-            type="text"
-          />
-          <input type="submit" value="Guardar" />
-        </form>
-      </div>
-      <div className="notas">
-        <h1>Lista de notas</h1>
-        {notes.map(note => {
-          return <Nota title={note.title} text={note.text} />
-        })}
-      </div>
-    </div>
-  );
-};
+    <div className="container">
+      <div className="app">
+        <div class="p-3 mb-2 bg-dark text-white">
+          <div className="agregar las notas">
+            <header>
+              <form onSubmit={handleSubmit}>
+                <label>Titulo </label>
+                <input
+                  onChange={e => setTitle(e.target.value)}
+                  value={title}
+                  type="text" />
+                <label>Texto </label>
+                <input class="m-2  "
+                  onChange={e => setText(e.target.value)}
+                  value={text}
+                  type="text" />
+                <input type="button" class="btn btn-secondary" type="submit" value="guardar" />
 
+              </form>
+            </header>
+          </div>
+        </div>
+
+        <div className="Notas">
+          Lista de notas
+          <br></br>
+          {notes.map(note => {
+            return <Nota
+              updateNote={updateNote}
+              deleteNote={deleteNote}
+              key={note._id}
+              id={note._id}
+              title={note.title} text={note.text} />
+
+          })}
 export default App;
 
