@@ -84,7 +84,6 @@ const App = () => {
             </header>
           </div>
         </div>
-
         <div className="Notas">
           Lista de notas
           <br></br>
@@ -95,7 +94,6 @@ const App = () => {
               key={note._id}
               id={note._id}
               title={note.title} text={note.text} />
-
-          })}
+ })}
 export default App;
 
