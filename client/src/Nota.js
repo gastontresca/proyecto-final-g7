@@ -1,4 +1,4 @@
-onst Nota = props => {
+const Nota = props => {
   const { title, text } = props;
   return (
     <div className="nota">

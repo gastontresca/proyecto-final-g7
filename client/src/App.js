@@ -5,34 +5,6 @@ import Nota from './Nota';
 const App = () => {
 
   const [notes, setNotes] = useState([]);
-  
-    const deleteNote = id => {
-    axios.delete('http://localhost:4000/api/notes/' + id)
-      .then(res => {
-        const notasActualizadas = notes.filter(note => id !== note._id);
-        console.log(notasActualizadas);
-        setNotes(notasActualizadas);
-      })
-      .catch(err => console.log(err));
-  };
-
-  const updateNote = id => {
-    console.log(id);
-    const tituloActualizado = prompt('ingrese nuevo titulo');
-    const textoActualizado = prompt('ingrese nuevo texto');
-    const datos = {
-      title: tituloActualizado,
-      text: textoActualizado
-    };
-    axios.put('http://localhost:4000/api/notes/' + id, datos)
-      .then(res => {
-        const notasActualizadas = notes.map(note => (
-          note._id === id ? res.data : note
-        ));
-        setNotes(notasActualizadas);
-      })
-      .catch(err => console.log(err));
-  };
 
   useEffect(() => {
     console.log('Vamos a buscar todas las notas');
@@ -89,4 +61,3 @@ const App = () => {
 };
 
 export default App;
-

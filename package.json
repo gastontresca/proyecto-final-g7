@@ -1,7 +1,7 @@
 {
   "name": "proyecto-final-g7",
   "version": "1.0.0",
-  "description": "",
+  "description": "Integrantes: Yubran, Casanova y Tresca",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -17,5 +17,13 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.13"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gastontresca/proyecto-final-g7.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gastontresca/proyecto-final-g7/issues"
+  },
+  "homepage": "https://github.com/gastontresca/proyecto-final-g7#readme"
 }
