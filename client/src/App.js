@@ -94,6 +94,6 @@ const App = () => {
               key={note._id}
               id={note._id}
               title={note.title} text={note.text} />
- })}
+ })
 export default App;
 
